@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -26,6 +27,30 @@ public class Account {
     @Size(min = 4)
     private String password;
 
+    private String title;
+    private String name;
+    private String surname;
+
+    @Size(min = 11, max = 11)
+    private String peselNumber;
+
+    private String street;
+    private String homeNumber;
+    private String postcode;
+    private String city;
+    private Nationality nationality;
+
+    private String phoneNumber;
+
+    private String emailAddress;
+
+    private String offceNumber;
+
+    private Specialization specialization;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Visits visits;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @Cascade(value = org.hibernate.annotations.CascadeType.DETACH)
     private Set<AccountRole> accountRoles;
@@ -35,5 +60,22 @@ public class Account {
     public boolean isAdmin() {
         return accountRoles.stream()
                 .anyMatch(accountRole -> accountRole.getName().equals("ADMIN"));
+    }
+
+    public Account(@NotEmpty @Size(min = 4) String username, @NotEmpty @Size(min = 4) String password, String name,
+                   String surname, @Size(min = 11, max = 11) String peselNumber, String street, String homeNumber,
+                   String postcode, String city, Nationality nationality, String phoneNumber, String emailAddress) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.peselNumber = peselNumber;
+        this.street = street;
+        this.homeNumber = homeNumber;
+        this.postcode = postcode;
+        this.city = city;
+        this.nationality = nationality;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
     }
 }

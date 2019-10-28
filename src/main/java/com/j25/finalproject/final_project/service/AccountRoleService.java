@@ -14,7 +14,7 @@ import java.util.Set;
 @Service
 public class AccountRoleService {
 //    jeśli nie znajdzie w pliku konfiguracyjnym to domyślnie wpisze USER
-    @Value("${account.default.roles:USER}")
+    @Value("${account.default.roles:PATIENT}")
     private String[] defaultRoles;
 
     private AccountRoleRepository accountRoleRepository;

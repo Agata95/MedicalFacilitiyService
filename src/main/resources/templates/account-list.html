@@ -21,13 +21,13 @@
             <div class="col-3" th:text="${account.getUsername()}"></div>
             <div class="col-3" th:text="${account.getAccountRoles()}"></div>
             <div class="row col-3">
-                <div class="col-3" sec:authorize="hasAnyRole('ACCOUNT_REMOVER', 'ADMIN')">
+                <div class="col-3" sec:authorize="hasAnyRole('ADMIN')">
                     <a th:href="@{/admin/account/remove(accountId=${account.getId()})}">
                         <button th:disabled="${account.isAdmin()}" type="button" class="btn btn-danger">Remove
                         </button>
                     </a>
                 </div>
-                <div class="col-3" sec:authorize="hasAnyRole('ACCOUNT_MANAGER', 'ADMIN')">
+                <div class="col-3" sec:authorize="hasAnyRole('ADMIN')">
                     <a th:href="@{/admin/account/toggleLock(accountId=${account.getId()})}">
                         <button type="button" class="btn btn-primary"
                                 th:text="${account.isLocked()? 'Unlock': 'Lock'}">

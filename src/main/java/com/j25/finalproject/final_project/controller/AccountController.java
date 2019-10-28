@@ -1,6 +1,7 @@
 package com.j25.finalproject.final_project.controller;
 
 import com.j25.finalproject.final_project.model.Account;
+import com.j25.finalproject.final_project.model.Nationality;
 import com.j25.finalproject.final_project.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,8 +27,9 @@ public class AccountController {
     @GetMapping("/register")
     public String registrationForm(Model model, Account account) {
         model.addAttribute("newAccount", account);
+        model.addAttribute("nationalities", Nationality.values());
 
-        return "registration-form";
+        return "registration-form-patient";
     }
 
     @PostMapping("/register")
@@ -56,7 +58,7 @@ public class AccountController {
         model.addAttribute("newAccount", account);
         model.addAttribute("errorMessage", s);
 
-        return "registration-form";
+        return "registration-form-patient";
     }
 
 

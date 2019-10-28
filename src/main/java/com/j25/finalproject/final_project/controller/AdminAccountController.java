@@ -37,14 +37,14 @@ public class AdminAccountController {
     }
 
     @GetMapping("/list")
-    @PreAuthorize(value = "hasAnyRole('ACCOUNT_MANAGER', 'ADMIN') ")
+    @PreAuthorize(value = "hasAnyRole('ADMIN') ")
     public String getUserList(Model model) {
         model.addAttribute("accounts", accountService.getAll());
         return "account-list";
     }
 
     @GetMapping("/toggleLock")
-    @PreAuthorize(value = "hasAnyRole('ACCOUNT_MANAGER', 'ADMIN')")
+    @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String toggleLock(@RequestParam(name = "accountId") Long accountId) {
         accountService.toggleLock(accountId);
 
@@ -52,7 +52,7 @@ public class AdminAccountController {
     }
 
     @GetMapping("/remove")
-    @PreAuthorize(value = "hasAnyRole('ACCOUNT_REMOVER', 'ADMIN')")
+    @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String remove(@RequestParam(name = "accountId") Long accountId) {
         accountService.remove(accountId);
 

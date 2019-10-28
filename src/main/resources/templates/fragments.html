@@ -16,16 +16,27 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-1 sticky-top ">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
             <a class="py-2 navbar-brand" th:href="@{/}">Home</a>
-            <!--<a class="py-2 d-none d-md-inline-block" sec:authorize="isAuthenticated()" th:href="@{/task/add}">Add task</a>-->
-            <!--<a class="py-2 d-none d-md-inline-block" sec:authorize="isAuthenticated()" th:href="@{/task/list}">Current tasks</a>-->
-            <!--<a class="py-2 d-none d-md-inline-block" sec:authorize="isAuthenticated()" th:href="@{/task/list/archived}">Archived tasks</a>-->
-            <!--<a class="py-2 d-none d-md-inline-block" sec:authorize="hasAnyRole('ADMIN', 'ACCOUNT_REMOVER', 'ACCOUNT_MANAGER')" th:href="@{/admin/account/list}">Account list</a>-->
-            <!--<a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('ADMIN')" th:href="@{/admin/task/list}">Task list</a>-->
+            <a class="maj-2 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('ADMIN')"
+               th:href="@{/admin/account/list}">Account list</a>
             <div class="py-2 navbar-brand d-md-inline-block">
                 <a class="maj-2 navbar-brand d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
                 <a class="maj-2 navbar-brand d-md-inline-block" sec:authorize="!isAuthenticated()"
                    th:href="@{/user/register}">Register</a>
-                <a class="maj-2 navbar-brand d-md-inline-block" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+                <div class="dropdown" sec:authorize="isAuthenticated()">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profile
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <a>
+                            <button class="dropdown-item" type="button">Details</button>
+                        </a>
+                        <a th:href="@{/logout}">
+                            <button class="dropdown-item" type="button">Logout</button>
+                        </a>
+                    </div>
+                </div>
+                <!--<a class="maj-2 navbar-brand d-md-inline-block" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>-->
             </div>
         </div>
     </nav>

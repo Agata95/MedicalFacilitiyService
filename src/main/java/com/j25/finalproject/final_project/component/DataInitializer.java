@@ -28,13 +28,12 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        addDefaultRole("USER");
+        addDefaultRole("PATIENT");
         addDefaultRole("ADMIN");
-        addDefaultRole("ACCOUNT_MANAGER");
-        addDefaultRole("ACCOUNT_REMOVER");
+        addDefaultRole("DOCTOR");
 
-        addDefaultUser("admin", "admin", "ADMIN", "USER");
-        addDefaultUser("user", "user", "USER");
+        addDefaultUser("admin", "admin", "ADMIN", "PATIENT");
+//        addDefaultUser("user", "user", "PATIENT");
     }
 
     private void addDefaultUser(String username, String password, String... roles) {

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration form</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>Registration form</h1>
+    <form th:action="@{/user/register}" method="post" th:object="${newAccount}">
+        <div class="row col-12 form-container">
+            <!--<div th:if="${errorMessage != null}" class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-12 alert alert-danger" th:text="${errorMessage}"></div>-->
+            <!--</div>-->
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="username">Username:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="username" th:field="*{username}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="password">Password:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="password" id="password" th:field="*{password}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="password-confirm">Password confirm:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="password" id="password-confirm" th:name="passwordConfirm">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="name">Name:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="name" th:field="*{name}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="surname">Surname:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="surname" th:field="*{surname}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="peselNumber">PESEL:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="peselNumber" th:field="*{peselNumber}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="street">Name of Street:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="street" th:field="*{street}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="homeNumber">Number of Home/Flat:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="homeNumber" th:field="*{homeNumber}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="postcode">Postcode:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="postcode" th:field="*{postcode}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="city">City:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="city" th:field="*{city}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="city">Nationality:</label>
+                </div>
+                <div class="col-md-6">
+                    <select th:field="*{nationality}" th:name="nationalityId" id="nationalityId" class="form-control">>
+                        <option th:each="nationality : ${nationalities}" th:text="${nationality}" th:value="${nationality}">
+                    </select>
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="phoneNumber">Phone Number:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="phoneNumber" th:field="*{phoneNumber}">
+                </div>
+            </div>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="emailAddress">Email Address:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="emailAddress" th:field="*{emailAddress}">
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-button-row">
+                <div class="col-md-6">
+                    <button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary offset-3 col-md-6">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>
