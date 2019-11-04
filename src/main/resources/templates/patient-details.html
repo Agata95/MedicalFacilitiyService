@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Details</title>
+    <div th:replace="fragments :: headerlinks" th:remove="tag"></div>
+</head>
+<body>
+<div th:replace="fragments :: navigator"></div>
+<main role="main" class="main">
+    <div class="container">
+        <div class="row col-md-12 list-container">
+            <div class="row col-md-12">
+                <h1>Details:</h1>
+            </div>
+            <div class="row col-md-12" th:object="${patient}">
+                <div class="row col-md-12 list-row" th:object="${patient}">
+                    <div class="col-md-2 font-weight-bold">Id:</div>
+                    <div class="col-md-2" th:text="*{id}"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                    <a th:href="@{'/grade/add?id='+${patient.getId()}}" class="col-md-12">
+                        <button type="button" class="btn btn-outline-info col-md-12">Grade add</button>
+                    </a>
+                </div>
+                </div>
+                <div class="row col-md-12 list-row" th:object="${patient}">
+                    <div class="col-md-2 font-weight-bold">Name:</div>
+                    <div class="col-md-2" th:text="*{name}"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <a th:href="@{'/student/grades?id='+${patient.getId()}}" class="col-md-12">
+                            <button type="button" class="btn btn-outline-info col-md-12">Grade List</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row col-md-12 list-row" th:object="${patient}">
+                    <div class="col-md-2 font-weight-bold">Surname:</div>
+                    <div class="col-md-2" th:text="*{surname}"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <a th:href="@{'/student/edit?id='+${patient.getId()}}" class="col-md-12">
+                            <button type="button" class="btn btn-outline-info col-md-12">Edit Student</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row col-md-12 list-row" th:object="${patient}">
+                    <div class="col-md-2 font-weight-bold">PESEL:</div>
+                    <div class="col-md-2" th:text="*{pesel}"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <a th:href="@{'/student/remove?id='+${patient.getId()}}" class="col-md-12">
+                            <button type="button" class="btn btn-outline-danger col-md-12">Remove Student</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-12"></div>
+            <div class="row col-md-12">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <a th:href="@{/student/list}">
+                        <button type="button" class="btn btn-link col-md-12">Back to Student List</button>
+                    </a>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</main>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+</body>
+</html>

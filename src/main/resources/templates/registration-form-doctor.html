@@ -43,10 +43,18 @@
             </div>
             <div class="col-2"></div>
         </div>
-        <h2>Your Personal Details:</h2>
+        <h2>Personal Details:</h2>
         <div class="row col-12">
             <div class="col-2"></div>
             <div class="col-8 form-container">
+                <div class="row col-md-12 form-input-row">
+                    <div class="col-md-6">
+                        <label for="title">Title:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" min="3" id="title" placeholder="title" th:field="*{title}" required>
+                    </div>
+                </div>
                 <div class="row col-md-12 form-input-row">
                     <div class="col-md-6">
                         <label for="name">Name:</label>
@@ -65,14 +73,6 @@
                 </div>
                 <div class="row col-md-12 form-input-row">
                     <div class="col-md-6">
-                        <label for="pesel">PESEL:</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input class="form-control" min="11" id="pesel" placeholder="99999999999" th:field="*{pesel}" required>
-                    </div>
-                </div>
-                <div class="row col-md-12 form-input-row">
-                    <div class="col-md-6">
                         <label for="phoneNumber">Phone number:</label>
                     </div>
                     <div class="col-md-6">
@@ -82,7 +82,6 @@
                 <div class="row col-md-12 form-input-row">
                     <div class="col-md-6">
                         <label for="emailAddress">Email address:</label>
-
                     </div>
                     <div class="col-md-6 form-group">
                         <input type="email" class="form-control" id="emailAddress" th:field="*{emailAddress}"
@@ -126,16 +125,48 @@
                 </div>
                 <div class="row col-md-12 form-input-row">
                     <div class="col-md-6">
-                        <label for="nationalityId">Nationality:</label>
+                        <label for="city">Nationality:</label>
                     </div>
                     <div class="col-md-6">
                         <select th:field="*{nationality}" th:name="nationalityId" id="nationalityId"
-                                class="form-control">
+                                class="form-control">>
                             <option th:each="nationality : ${nationalities}" th:text="${nationality}"
                                     th:value="${nationality}">
                         </select>
                     </div>
                 </div>
+                <div class="row col-md-12 form-input-row">
+                    <div class="col-md-6">
+                        <label for="offceNumber">Office Number:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" id="offceNumber" placeholder="offceNumber" th:field="*{offceNumber}">
+                    </div>
+                </div>
+                <div class="row col-md-12 form-input-row">
+                    <div class="col-md-6">
+                        <label for="specializationId">Specialization:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select th:field="*{specialization}" th:name="specializationId" id="specializationId"
+                                class="form-control">
+                            <option th:each="specialization : ${specializations}" th:text="${specialization}"
+                                    th:value="${specialization}">
+                        </select>
+                    </div>
+                </div>
+                <!--<div th:each="role : ${roles}" class="row col-md-12 list-data-row">-->
+                    <!--<input type="hidden" th:name="accountId" th:value="${newAccount.getId()}" >-->
+                    <!--<div class="col-3" th:text="${role.getName()}"></div>-->
+                    <!--<div class="row col-3">-->
+                    <!--</div>-->
+                    <!--<div class="col-3">-->
+                        <!--<input type="checkbox"-->
+                               <!--th:checked="${newAccount.getAccountRoles().contains(role)}" disabled></div>-->
+                    <!--<div class="col-3">-->
+                        <!--<input type="checkbox" th:name="${role.getName()}"-->
+                               <!--th:checked="${newAccount.getAccountRoles().contains(role)}"></div>-->
+                <!--</div>-->
             </div>
             <div class="col-2"></div>
         </div>
@@ -151,14 +182,6 @@
             </div>
             <div class="col-md-2"></div>
         </div>
-        <!--<div class="row col-md-12 form-button-row">-->
-        <!--<div class="col-md-6">-->
-        <!--<button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>-->
-        <!--</div>-->
-        <!--<div class="col-md-6">-->
-        <!--<button type="submit" class="btn btn-primary offset-3 col-md-6">Submit</button>-->
-        <!--</div>-->
-        <!--</div>-->
 </div>
 </form>
 </div>

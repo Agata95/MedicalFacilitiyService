@@ -2,6 +2,8 @@ package com.j25.finalproject.final_project.controller;
 
 
 import com.j25.finalproject.final_project.model.Account;
+import com.j25.finalproject.final_project.model.Nationality;
+import com.j25.finalproject.final_project.model.Specialization;
 import com.j25.finalproject.final_project.model.dto.AccountPasswordResetRequest;
 import com.j25.finalproject.final_project.service.AccountRoleService;
 import com.j25.finalproject.final_project.service.AccountService;
@@ -11,12 +13,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,7 +28,6 @@ import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping(path = "/admin/account/")
-// dostęp chroniony tylko regułą w cudzysłowiu
 public class AdminAccountController {
 
     private AccountService accountService;
@@ -93,7 +96,6 @@ public class AdminAccountController {
     }
 
     @PostMapping("/editRoles")
-
     @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String editRoles(Long accountId, HttpServletRequest request) {
         accountService.editRoles(accountId, request);
@@ -119,4 +121,5 @@ public class AdminAccountController {
 
         return "redirect:/account/list/page/" + page;
     }
+
 }

@@ -5,7 +5,6 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -31,8 +30,8 @@ public class Account {
     private String name;
     private String surname;
 
-    @Size(min = 11, max = 11)
-    private String peselNumber;
+//    @Size(min = 11, max = 11)
+    private String pesel;
 
     private String street;
     private String homeNumber;
@@ -63,13 +62,13 @@ public class Account {
     }
 
     public Account(@NotEmpty @Size(min = 4) String username, @NotEmpty @Size(min = 4) String password, String name,
-                   String surname, @Size(min = 11, max = 11) String peselNumber, String street, String homeNumber,
+                   String surname, @Size(min = 11, max = 11) String pesel, String street, String homeNumber,
                    String postcode, String city, Nationality nationality, String phoneNumber, String emailAddress) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.surname = surname;
-        this.peselNumber = peselNumber;
+        this.pesel = pesel;
         this.street = street;
         this.homeNumber = homeNumber;
         this.postcode = postcode;

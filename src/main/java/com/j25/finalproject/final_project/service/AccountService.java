@@ -40,7 +40,7 @@ public class AccountService {
 //        zapis do bazy:
         accountRepository.save(account);
 
-        return false;
+        return true;
     }
 
     public List<Account> getAll() {
@@ -121,4 +121,16 @@ public class AccountService {
         return accountRepository.findAll(of);
     }
 
+    public List<Account> getAllDoctors() {
+        List<Account> allAccounts = accountRepository.findAll();
+        List<Account> doctors = new ArrayList<>();
+
+        for (Account a : allAccounts) {
+            if(a.getAccountRoles().stream()
+                    .anyMatch(accountRole -> accountRole.getName().equals("DOCTOR"))){
+                doctors.add(a);
+            }
+        }
+        return doctors;
+    }
 }

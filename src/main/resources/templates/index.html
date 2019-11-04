@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Home page</title>
     <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
@@ -10,11 +10,19 @@
 <main role="main">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3">Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-                jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-                unique.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+            <h1 class="display-3">Saint Joseph Hospital</h1>
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <p>Welcome to Saint Joseph Hospital, where we are committed to providing you and your family
+                        with exceptional care and service. We are proud to care for you with compassion, dignity and
+                        respect. All of us at Saint Joseph Hospital work hard to create an environment that
+                        offers comfort and healing to patients and visitors.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">Learn more &raquo;</a></p>
+                </div>
+                <div class="col-md-6">
+                    <img th:src="@{/js/hos.jpg}" class="rounded" height="300">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -22,25 +30,27 @@
         <!-- Example row of columns -->
         <div class="row">
             <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                    mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                <h2>Safety and modernity</h2>
+                <p>Patients of our new hospital receive top quality services guaranteed by the Saint Joseph Hospital.
+                    The medical staff of the hospital was chosen among reputable specialists with long-term experience.
+                    The Patients are well taken care of by experienced anaesthetists and nurses. The Scientific Council
+                    of the Saint Joseph Hospital will provide factual support. We guarantee our Patients the
+                    maximum safety
+                    thanks to the modern equipment of the operating rooms and the professional care. </p>
             </div>
             <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                    mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                <h2>Spiritual Well-Being</h2>
+                <p>Saint Joseph Hospital emphasizes a uniquely holistic approach to recovery. The care provided
+                    to each patient goes beyond physical needs, caring for the person’s spiritual and emotional
+                    well-being in an environment uniquely designed for healing. </p>
             </div>
             <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                    ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                <h2>Managing Health</h2>
+                <p>Whether you are trying to quit smoking, eat healthier or maintain a healthy weight, we have the
+                    resources you need. It’s normal to have questions about your health. What is a balanced diet? What
+                    does low fat really mean? How much should I exercise? How can I stop my tobacco use and what should
+                    I expect after I quit? How can I tell if I have a cold or the flu? How do I know if my blood
+                    pressure is too high or too low? You can find the answers to these questions here.</p>
             </div>
         </div>
 

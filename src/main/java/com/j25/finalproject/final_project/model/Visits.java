@@ -23,8 +23,8 @@ public class Visits {
     @NotEmpty
     private LocalTime time;
 
-//    @ToString.Exclude
-//    @EqualsAndHashCode.Exclude
-//    @OneToMany(mappedBy = "visits", fetch = FetchType.LAZY)
-//    private Set<Account> accountSet;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "visits", fetch = FetchType.LAZY)
+    private Set<Account> accountSet;
 }

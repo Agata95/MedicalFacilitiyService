@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                reguły związane z rolami (np. /admin/**)
                 .anyRequest().authenticated()
 //        .anyRequest().authenticated() oznacza, że dla każdej innej strony ma pytać o login i hasło
+//                .antMatchers("/user/register").hasAnyRole("ADMIN", "PATIENT")
                 .and()
                     .formLogin()
                         .loginPage("/login")

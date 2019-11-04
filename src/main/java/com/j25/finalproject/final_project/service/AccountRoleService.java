@@ -36,6 +36,7 @@ public class AccountRoleService {
         return accountRoles;
     }
 
+
     public List<AccountRole> getAll() {
         return accountRoleRepository.findAll();
     }
