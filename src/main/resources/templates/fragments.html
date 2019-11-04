@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-1 sticky-top ">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
             <a class="py-2 navbar-brand" th:href="@{/}">Home</a>
-            <a class="py-2 navbar-brand" th:href="@{/}">About Hospital</a>
+            <a class="py-2 navbar-brand" th:href="@{/aboutUs}">About Hospital</a>
             <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('PATIENT')"
             th:href="@{/user/doctor/list}">Find a Doctor</a>
             <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('ADMIN')"

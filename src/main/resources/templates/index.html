@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home page</title>
+    <title>Saint Joseph Hospital</title>
     <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
@@ -10,14 +10,14 @@
 <main role="main">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-3">Saint Joseph Hospital</h1>
             <div class="row col-md-12">
                 <div class="col-md-6">
-                    <p>Welcome to Saint Joseph Hospital, where we are committed to providing you and your family
+                    <h1 class="display-3">Saint Joseph</h1>
+                    <p align="justify">Welcome to Saint Joseph Hospital, where we are committed to providing you and your family
                         with exceptional care and service. We are proud to care for you with compassion, dignity and
                         respect. All of us at Saint Joseph Hospital work hard to create an environment that
                         offers comfort and healing to patients and visitors.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">Learn more &raquo;</a></p>
+                    <p><a class="btn btn-secondary" th:href="@{/aboutUs}" role="button">Learn more &raquo;</a></p>
                 </div>
                 <div class="col-md-6">
                     <img th:src="@{/js/hos.jpg}" class="rounded" height="300">
@@ -27,11 +27,10 @@
     </div>
 
     <div class="container">
-        <!-- Example row of columns -->
         <div class="row">
             <div class="col-md-4">
                 <h2>Safety and modernity</h2>
-                <p>Patients of our new hospital receive top quality services guaranteed by the Saint Joseph Hospital.
+                <p align="justify">Patients of our new hospital receive top quality services guaranteed by the Saint Joseph Hospital.
                     The medical staff of the hospital was chosen among reputable specialists with long-term experience.
                     The Patients are well taken care of by experienced anaesthetists and nurses. The Scientific Council
                     of the Saint Joseph Hospital will provide factual support. We guarantee our Patients the
@@ -40,13 +39,13 @@
             </div>
             <div class="col-md-4">
                 <h2>Spiritual Well-Being</h2>
-                <p>Saint Joseph Hospital emphasizes a uniquely holistic approach to recovery. The care provided
+                <p align="justify">Saint Joseph Hospital emphasizes a uniquely holistic approach to recovery. The care provided
                     to each patient goes beyond physical needs, caring for the person’s spiritual and emotional
                     well-being in an environment uniquely designed for healing. </p>
             </div>
             <div class="col-md-4">
                 <h2>Managing Health</h2>
-                <p>Whether you are trying to quit smoking, eat healthier or maintain a healthy weight, we have the
+                <p align="justify">Whether you are trying to quit smoking, eat healthier or maintain a healthy weight, we have the
                     resources you need. It’s normal to have questions about your health. What is a balanced diet? What
                     does low fat really mean? How much should I exercise? How can I stop my tobacco use and what should
                     I expect after I quit? How can I tell if I have a cold or the flu? How do I know if my blood

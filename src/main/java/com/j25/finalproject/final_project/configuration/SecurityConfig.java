@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                rozpoczynamy definicję reguł bezpieczeństwa:
                 .authorizeRequests()
                 .antMatchers("/",
+                        "/aboutUs",
                         "/css/**",
                         "/js/**",
                         "/webjars/**",

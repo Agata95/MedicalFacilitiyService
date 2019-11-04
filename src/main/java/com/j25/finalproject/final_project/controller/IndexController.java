@@ -14,11 +14,9 @@ public class IndexController {
         return "index";
     }
 
-//    gdy nie jesteśmy zalogowani nie da się wejść do danej strony,
-//    tylko po zalogowaniu można na tym mappingu przeglądać strony
-    @GetMapping("/tylkodlakozakow")
-    public String tylkoDlaKozakow(){
-        return "index";
+    @GetMapping("/aboutUs")
+    public String aboutUs(){
+        return "about-hospital";
     }
 
     @GetMapping("/login")

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<main role="main">
+    <div style="padding: 20px;">
+        <div class="row col-md-12">
+            <div class="col-md-7">
+                <img th:src="@{/js/hospital2.jpg}" class="rounded" height="120">
+            </div>
+            <div class="col-md-5">
+                <h2 class="display-4">Saint Joseph Hospital</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">About Hospital. <span
+                        class="text-muted">About Saint Joseph.</span></h2>
+                <p class="lead" align="justify">Saint Joseph Hospital is a 433-bed hospital located in Lexington,
+                    Kentucky. Founded in
+                    1877, Saint Joseph Hospital was Lexington’s first hospital and serves residents of central and
+                    eastern Kentucky.
+                </p>
+                <p class="lead" align="justify">
+                    At Saint Joseph Hospital, we are committed to providing the highest quality of care and are guided
+                    by our Mission and Core Values of Reverence, Integrity, Compassion and Excellence.
+                </p>
+                <p class="lead" align="justify">
+                    Also known as Lexington's "heart hospital", Saint Joseph has pioneered many firsts in the health
+                    care community. Saint Joseph has also been nationally recognized for treatment in the areas of
+                    cardiology, orthopedics and stroke.
+                </p>
+            </div>
+            <div class="col-md-5" style="padding: 20px;">
+                <img th:src="@{/js/hospital.jpg}" width="450">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Professionalism, safety. <span
+                        class="text-muted">Modernity.</span></h2>
+                <p class="lead" align="justify">Patients of our new hospital receive top quality services guaranteed by
+                    the Saint Joseph Hospital.
+                    The medical staff of the hospital was chosen among reputable specialists with long-term experience
+                    in their specialization: surgeons, orthopaedists, gynaecologists, laryngologists - who mostly have
+                    cooperated with the Saint Joseph Hospital for many years. The Patients are well taken care of by
+                    experienced
+                    anaesthetists and nurses. The Scientific Council of the Saint Joseph Hospital will provide factual
+                    support.
+                    We guarantee our Patients the maximum safety thanks to the modern equipment of the operating rooms
+                    and the professional care.</p>
+            </div>
+            <div class="col-md-5" style="padding: 20px;">
+                <img th:src="@{/js/equp.jpg}" width="450">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Each Patient is treated individually. <span class="text-muted">Uniqueness.</span>
+                </h2>
+                <p class="lead" align="justify">We are aware of the fact that for the full and quick recovery, besides
+                    the top quality
+                    diagnosis and treatment, it is extremely important to develop a good relationship with Patients and
+                    that is why each one of them is treated uniquely. The date of the medical intervention will be fixed
+                    individually by the doctor together with the Patient. It will be possible then to choose the most
+                    convenient date. We have set up a separate info line specifically for the Patients of the new
+                    hospital. The hospital has single and double rooms, both types comfortably equipped with individual
+                    bathrooms, TV sets and internet connection.
+                </p>
+                <p class="lead" align="justify">
+                    The Patients can be assisted by their families throughout the entire stay at the hospital. Children
+                    can be accompanied by their parents even into the operating room until the moment of narcosis, in
+                    order to reduce stress.
+                </p>
+                <p class="lead" align="justify">
+                    During their stay at the hospital the Patients can use the free-of-charge parking lot.
+                </p>
+            </div>
+            <div class="col-md-5" style="padding: 20px;">
+                <img th:src="@{/js/kids.jpg}" width="450">
+            </div>
+        </div>
+
+    </div>
+</main>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>

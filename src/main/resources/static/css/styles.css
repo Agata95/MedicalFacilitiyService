@@ -87,3 +87,19 @@
     margin: 16px 0 16px 0;
     padding: 0 5px 0 5px;
 }
+
+
+.featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+
+ex1 {
+    margin-top: 25px;
+}
