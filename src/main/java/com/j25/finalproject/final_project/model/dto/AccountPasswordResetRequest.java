@@ -14,7 +14,7 @@ public class AccountPasswordResetRequest {
 
 //    dto - data transfer object
 
-    //    te parametry muszą się zgadzać z tymi z pliku account-passwordreset
+    //    te parametry muszą się zgadzać z tymi z pliku accountSet-passwordreset
 //    th:name="accountId" oraz th:name="resetpassword":
     private Long accountId;
 

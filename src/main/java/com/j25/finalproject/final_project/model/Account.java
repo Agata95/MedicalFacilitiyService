@@ -47,8 +47,17 @@ public class Account {
 
     private Specialization specialization;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Visits visits;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY)
+    @Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
+    private Set<Visits> doctorVisits;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
+    @Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
+    private Set<Visits> patientVisit;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @Cascade(value = org.hibernate.annotations.CascadeType.DETACH)

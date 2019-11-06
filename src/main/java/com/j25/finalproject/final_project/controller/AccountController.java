@@ -59,11 +59,11 @@ public class AccountController {
             return registrationError(model, account, "User with given username already exists. Please enter a different username.");
         }
 
-        return registrationSuccessfully(model, account, "Your account has been successfully created. Please login.");
+        return registrationSuccessfully(model, account, "Your patient has been successfully created. Please login.");
     }
 
     @GetMapping("/doctor/register")
-    @PreAuthorize(value = "hasAnyRole('ADMIN') ")
+    @PreAuthorize(value = "hasAnyRole('ADMIN')")
     public String registrationForm2(Model model, Account account) {
 
         account.setNationality(Nationality.POLISH);

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>My visit list</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>My visit list</h1>
+    <div class="row col-md-12">
+
+        <div style="padding: 20px;"></div>
+
+        <div class="row col-md-12 list-header-row">
+            <div class="col-3">Id</div>
+            <div class="col-3">Date</div>
+            <div class="col-3">Time</div>
+            <div class="col-3"><!--Buttons--></div>
+        </div>
+        <div th:each="visit : ${visits}" class="row col-md-12 list-data-row">
+            <div class="col-3" th:text="${visit.getId()}"></div>
+            <div class="col-3" th:text="${visit.getDate()}"></div>
+            <div class="col-3" th:text="${visit.getTime()}"></div>
+
+            <div class="row col-2">
+                <div class="col-6" sec:authorize="hasAnyRole('PATIENT')" th:if="${visit.getStatus().name() == 'TODO'}">
+                    <a th:href="@{'/visit/book/' + ${visit.getId()}}">
+                        <button type="button" class="btn btn-primary">Book
+                        </button>
+                    </a>
+                </div>
+                <div class="col-6" sec:authorize="hasAnyRole('DOCTOR')" th:if="${visit.getStatus().name() == 'BOOK'}">
+                    <a th:href="@{'/visit/archive/' + ${visit.getId()}}">
+                        <button type="button" class="btn btn-primary">Archive
+                        </button>
+                    </a>
+                </div>
+                <div class="col-6" sec:authorize="hasAnyRole('PATIENT', 'DOCTOR')"
+                     th:if="${visit.getStatus().name() == 'BOOK'}">
+                    <a>
+                        <button type="button" class="btn btn-primary btn-lg">Reservation
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <!--</div>-->
+
+            <!--<div class="row col-md-12">-->
+                <!--<nav aria-label="Pagination">-->
+                    <!--<ul class="pagination justify-content-center">-->
+                        <!--<li class="page-item" th:each="pageNumber : ${pageNumbers}">-->
+                            <!--<a class="page-link" th:href="@{/patient/list/page/${pageNumber}}"-->
+                               <!--th:text=*{pageNumber}>1</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</nav>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <th:block th:replace="fragments :: footer" th:remove="tag"/>
+    <th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>

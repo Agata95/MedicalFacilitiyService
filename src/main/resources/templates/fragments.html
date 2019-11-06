@@ -16,13 +16,15 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-1 sticky-top ">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
             <a class="py-2 navbar-brand" th:href="@{/}">Home</a>
-            <a class="py-2 navbar-brand" th:href="@{/aboutUs}">About Hospital</a>
+            <!--<a class="py-2 navbar-brand" th:href="@{/aboutUs}">About Hospital</a>-->
             <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('PATIENT')"
             th:href="@{/user/doctor/list}">Find a Doctor</a>
             <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('ADMIN')"
             th:href="@{/admin/account/list}">Account list</a>
             <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('ADMIN')"
             th:href="@{/user/doctor/register}">Doctor Register</a>
+            <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('DOCTOR')"
+            th:href="@{/visit/list}">Current Visit</a>
             <a class="py-2 navbar-brand" th:href="@{/}">Contact</a>
             <div class="py-2 navbar-brand d-md-inline-block">
                 <a class="maj-2 navbar-brand d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
@@ -37,11 +39,17 @@
                         <a th:href="@{/user/details}">
                             <button class="dropdown-item" type="button">Account Details</button>
                         </a>
-                        <a th:href="@{/}">
-                            <button class="dropdown-item" type="button">My Visits</button>
+                        <a th:href="@{/visit/patient/list}" sec:authorize="hasAnyRole('PATIENT')">
+                            <button class="dropdown-item" type="button">My Current Visits</button>
                         </a>
-                        <a th:href="@{/}" sec:authorize="hasAnyRole('PATIENT')">
-                            <button class="dropdown-item" type="button">My Prescriptions</button>
+                        <a th:href="@{/visit/list/patient/archived}" sec:authorize="hasAnyRole('PATIENT')">
+                            <button class="dropdown-item" type="button">My Archived Visits</button>
+                        </a>
+                        <a th:href="@{/visit/list}" sec:authorize="hasAnyRole('DOCTOR')">
+                            <button class="dropdown-item" type="button">My Graphic</button>
+                        </a>
+                        <a th:href="@{/visit/list/archived}" sec:authorize="hasAnyRole('DOCTOR')">
+                            <button class="dropdown-item" type="button">Archived Visits</button>
                         </a>
                         <div class="dropdown-divider"></div>
                         <a th:href="@{/logout}">

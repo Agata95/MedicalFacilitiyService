@@ -18,13 +18,21 @@ public class Visits {
     private Long id;
 
     @NotEmpty
-    private LocalDate date;
+    private String date;
 
     @NotEmpty
-    private LocalTime time;
+    private String time;
 
-    @ToString.Exclude
+    private String comment;
+
+    private VisitsStatus status;
+
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "visits", fetch = FetchType.LAZY)
-    private Set<Account> accountSet;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Account doctor;
+
+    @EqualsAndHashCode.Exclude
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Account patient;
+
 }

@@ -16,7 +16,7 @@
             <div class="col-2" th:text="${account.getSurname()}"></div>
             <div class="col-2" th:text="${account.getSpecialization()}"></div>
             <div class="btn-group col-md-4" role="group" aria-label="Basic example">
-                <a role="button" class="btn btn-secondary" th:href="@{/}">Book a Visit</a>
+                <a role="button" class="btn btn-secondary" th:href="@{'/visit/listDoctor/' + ${account.getId()}}">Book a Visit</a>
                 <a role="button" class="btn btn-secondary" th:href="@{/}">Details</a>
             </div>
         </div>
@@ -25,11 +25,12 @@
         <!--<nav aria-label="Pagination">-->
         <!--<ul class="pagination justify-content-center">-->
         <!--<li class="page-item" th:each="pageNumber : ${pageNumbers}">-->
-        <!--<a class="page-link" th:href="@{/account/list/page/${pageNumber}}" th:text=*{pageNumber}>1</a>-->
+        <!--<a class="page-link" th:href="@{/accountSet/list/page/${pageNumber}}" th:text=*{pageNumber}>1</a>-->
         <!--</li>-->
         <!--</ul>-->
         <!--</nav>-->
         <!--</div>-->
+
     </div>
 </div>
 <th:block th:replace="fragments :: footer" th:remove="tag"/>

@@ -32,8 +32,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addDefaultRole("ADMIN");
         addDefaultRole("DOCTOR");
 
-        addDefaultUser("admin", "admin", "ADMIN", "PATIENT");
-//        addDefaultUser("user", "user", "PATIENT");
+        addDefaultUser("admin", "admin", "ADMIN");
+        addDefaultUser("user", "user", "PATIENT");
+//        addDefaultUser("doctor", "doctor", "DOCTOR");
     }
 
     private void addDefaultUser(String username, String password, String... roles) {
