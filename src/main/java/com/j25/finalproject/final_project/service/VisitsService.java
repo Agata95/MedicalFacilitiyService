@@ -35,13 +35,13 @@ public class VisitsService {
         }
     }
 
-    public Set<Visits> getAllCurrent(String username) {
+    public Set<Visits> getAllVisitDoctor(String username) {
         Optional<Account> doctor = accountRepository.findByUsername(username);
         return getVisits(doctor);
     }
 
 
-    public Set<Visits> getAllCurrentPatient(String username) {
+    public Set<Visits> getAllVisitPatient(String username) {
         Optional<Account> patient = accountRepository.findByUsername(username);
         return getVisitsPatient(patient);
     }
@@ -60,7 +60,21 @@ public class VisitsService {
         return new HashSet<>();
     }
 
-        public Set<Visits> getAllArchivedPatient(String username) {
+    public Set<Visits> getAllCurrentVisitDoctor(String username) {
+        Optional<Account> doctor = accountRepository.findByUsername(username);
+        if (doctor.isPresent()) {
+            Account doctorAccount = doctor.get();
+
+            return doctorAccount
+                    .getDoctorVisits()
+                    .stream()
+                    .filter(visit -> visit.getStatus() == VisitsStatus.BOOK)
+                    .collect(Collectors.toSet());
+        }
+        return new HashSet<>();
+    }
+
+    public Set<Visits> getAllArchivedPatient(String username) {
         Optional<Account> patient = accountRepository.findByUsername(username);
         if (patient.isPresent()) {
             Account patientAccount = patient.get();
@@ -75,10 +89,6 @@ public class VisitsService {
     }
 
     public void setBook(Long visitId, String patient) {
-//        if (!userIsOwnerOf(patient, visitId)) {
-//            return;
-//        }
-
         Optional<Account> account = accountRepository.findByUsername(patient);
         if (account.isPresent()) {
             Account patientAccount = account.get();
@@ -90,14 +100,8 @@ public class VisitsService {
 
                 visitsRepository.save(visit);
 
-//                return patientAccount
-//                        .getPatientVisit()
-//                        .stream()
-//                        .filter(v -> v.getStatus() != VisitsStatus.ARCHIVED)
-//                        .collect(Collectors.toSet());
             }
         }
-//        return new HashSet<>();
     }
 
     public void setArchive(Long id, String doctor) {
@@ -113,20 +117,6 @@ public class VisitsService {
             visitsRepository.save(visit);
         }
     }
-
-//    public void setTodo(Long id, String username) {
-//        if (!userIsOwnerOf(username, id)) {
-//            return;
-//        }
-//
-//        Optional<Visits> visits = visitsRepository.findById(id);
-//        if (visits.isPresent() && visits.get().getStatus() == VisitsStatus.BOOK) {
-//            Visits visit = visits.get();
-//            visit.setStatus(VisitsStatus.TODO);
-//
-//            visitsRepository.save(visit);
-//        }
-//    }
 
     public boolean userIsOwnerOf(String username, Long visitId) {
         Optional<Account> account = accountRepository.findByUsername(username);
@@ -156,6 +146,7 @@ public class VisitsService {
         }
         return new HashSet<>();
     }
+
     private Set<Visits> getVisitsPatient(Optional<Account> patient) {
         if (patient.isPresent()) {
             Account patientAccount = patient.get();
@@ -166,6 +157,14 @@ public class VisitsService {
                     .collect(Collectors.toSet());
         }
         return new HashSet<>();
+    }
+
+    public void removeVisit(Long id) {
+        visitsRepository.deleteById(id);
+    }
+
+    public Optional<Visits> findByVisitId(Long id) {
+        return visitsRepository.findById(id);
     }
 
 //    public Set<Account> getDoctor(Long id) {

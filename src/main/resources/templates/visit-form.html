@@ -10,6 +10,8 @@
 <div class="container">
     <h1>Visit form</h1>
     <form th:action="@{/visit/add}" method="post" th:object="${visit}">
+        <input type="hidden" th:field="*{id}" th:value="*{id}">
+
         <div class="row col-12">
             <div class="col-2"></div>
             <div class="col-8 form-container">

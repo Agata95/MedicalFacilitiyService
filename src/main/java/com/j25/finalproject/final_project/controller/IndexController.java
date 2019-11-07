@@ -24,4 +24,9 @@ public class IndexController {
         return "login-form";
     }
 
+    @GetMapping("/work")
+    public String workMainPage(){
+        return "work-page";
+    }
+
 }

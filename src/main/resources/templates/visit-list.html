@@ -2,62 +2,89 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Visit list</title>
-    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    </th:block>
+
 </head>
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
     <h1>Visit list</h1>
-    <div class="row col-md-12">
+    <div class="row col-md-12 list-container">
 
-        <a role="button" class="btn btn-secondary btn-lg btn-block" sec:authorize="hasAnyRole('DOCTOR')"
+        <a role="button" class="btn btn-secondary btn-lg btn-block list-container" sec:authorize="hasAnyRole('DOCTOR')"
            th:href="@{/visit/add}">Add new Visit</a>
 
         <div style="padding: 20px;"></div>
 
         <div class="row col-md-12 list-header-row">
-            <div class="col-3" sec:authorize="hasAnyRole('DOCTOR')">Id</div>
-            <div class="col-3">Date</div>
-            <div class="col-3">Time</div>
+            <div class="col-1" sec:authorize="hasAnyRole('DOCTOR')">Id</div>
+            <div class="col-2">Date</div>
+            <div class="col-2">Time</div>
             <div class="col-3" sec:authorize="hasAnyRole('PATIENT')">Doctor</div>
-            <div class="col-3"><!--Buttons--></div>
+            <div class="col-4"><!--Buttons--></div>
         </div>
-        <div th:each="visit : ${visits}" class="row col-md-12 list-data-row">
-            <div class="col-3" sec:authorize="hasAnyRole('DOCTOR')" th:text="${visit.getId()}"></div>
-            <div class="col-3" th:text="${visit.getDate()}"></div>
-            <div class="col-3" th:text="${visit.getTime()}"></div>
-            <div class="col-3" sec:authorize="hasAnyRole('PATIENT')"
-                 th:text="${visit.getDoctor().getTitle() + ' ' + visit.getDoctor().getName() + ' ' + visit.getDoctor().getSurname()}"></div>
+        <div class="row col-md-12 list-row">
+            <div th:each="visit : ${visits}" class="row col-md-12 list-row-in">
+                <div class="col-1" sec:authorize="hasAnyRole('DOCTOR')" th:text="${visit.getId()}"></div>
+                <div class="col-2" th:text="${visit.getDate()}"></div>
+                <div class="col-2" th:text="${visit.getTime()}"></div>
+                <div class="col-3" sec:authorize="hasAnyRole('PATIENT')"
+                     th:text="${visit.getDoctor().getTitle() + ' ' + visit.getDoctor().getName() + ' ' + visit.getDoctor().getSurname()}"></div>
 
-            <div class="row col-3 btn-group" role="group" aria-label="Basic example">
-                <div sec:authorize="hasAnyRole('PATIENT')" th:if="${visit.getStatus().name() == 'TODO'}">
-                    <a th:href="@{'/visit/book/' + ${visit.getId()}}">
-                        <button type="button" class="btn btn-secondary btn-sm">Book
-                        </button>
-                    </a>
-                </div>
-                <div sec:authorize="hasAnyRole('DOCTOR')" th:if="${visit.getStatus().name() == 'BOOK'}">
-                    <a th:href="@{'/visit/archive/' + ${visit.getId()}}">
-                        <button type="button" class="btn btn-secondary btn-sm">Archive
-                        </button>
-                    </a>
-                </div>
-                <div sec:authorize="hasAnyRole('PATIENT', 'DOCTOR')"
-                     th:if="${visit.getStatus().name() == 'BOOK'}">
-                    <a>
-                        <button type="button" class="btn btn-secondary btn-sm" disabled>Reservation
-                        </button>
-                    </a>
-                </div>
-                <div sec:authorize="hasAnyRole('DOCTOR')"
-                     th:if="${visit.getStatus().name() == 'BOOK'}">
-                    <a>
-                        <button type="button" class="btn btn-secondary btn-sm">Details
-                        </button>
-                    </a>
-                </div>
+                <!--<div class="row col-4 btn-group btn-group-sm" role="group" aria-label="Basic example">-->
+                <div class="row col-4">
+                    <div sec:authorize="hasAnyRole('PATIENT')" th:if="${visit.getStatus().name() == 'TODO'}">
+                        <a th:href="@{'/visit/book/' + ${visit.getId()}}">
+                            <button type="button" class="btn btn-secondary list-row-2">Book
+                            </button>
+                        </a>
+                    </div>
+                    <div sec:authorize="hasAnyRole('DOCTOR')" th:if="${visit.getStatus().name() == 'TODO'}">
+                        <a th:href="@{'/visit/edit/' + ${visit.getId()}}">
+                            <button type="button" class="btn btn-secondary list-row-2">Edit
+                            </button>
+                        </a>
+                    </div>
+                    <div sec:authorize="hasAnyRole('DOCTOR')" th:if="${visit.getStatus().name() == 'TODO'}">
+                        <a th:href="@{'/visit/remove/' + ${visit.getId()}}">
+                            <button type="button" class="btn btn-secondary list-row-2">Remove
+                            </button>
+                        </a>
+                    </div>
+                    <div sec:authorize="hasAnyRole('PATIENT', 'DOCTOR')" th:if="${visit.getStatus().name() == 'BOOK'}">
+                        <a>
+                            <button type="button" class="btn btn-secondary list-row-2" disabled>Reservation
+                            </button>
+                        </a>
+                    </div>
+                    <div sec:authorize="hasAnyRole('DOCTOR')" th:if="${visit.getStatus().name() == 'BOOK'}">
+                        <a th:href="@{'/visit/archive/' + ${visit.getId()}}">
+                            <button type="button" class="btn btn-secondary list-row-2">Archive
+                            </button>
+                        </a>
+                    </div>
+                    <div sec:authorize="hasAnyRole('DOCTOR')"
+                         th:if="${visit.getStatus().name() == 'BOOK'}">
+                        <a>
+                            <button type="button" class="btn btn-secondary list-row-2">Details
+                            </button>
+                        </a>
+                    </div>
 
+                    <div th:if="${visit.getStatus().name() == 'ARCHIVED'}">
+                        <a>
+                            <button type="button" class="btn btn-secondary list-row-2">Details
+                            </button>
+                        </a>
+                    </div>
+
+                    <!--<div class="dropdown-divider"></div>-->
+                </div>
             </div>
             <!--</div>-->
 
@@ -73,7 +100,8 @@
             <!--</div>-->
         </div>
     </div>
-    <th:block th:replace="fragments :: footer" th:remove="tag"/>
-    <th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
 </body>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:https="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>Work Main Page</h1>
+    <div class="row col-md-12 ex1">
+        <div class="col-md-4">
+            <a th:href="@{/visit/list/current}">
+                <button type="button">
+                    <div class="jumbotron jumbotron-fluid"
+                         style="background-image: url(https://www.wikihow.com/images/thumb/2/2e/Write-a-Book-Step-16-Version-2.jpg/aid53885-v4-728px-Write-a-Book-Step-16-Version-2.jpg);
+                        background-size: 119%">
+                        <h1 class="display-4 background-vis"
+                            style="color: #2c3362;  font-weight: bold">
+                            Current Visits</h1>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a th:href="@{/visit/list}">
+                <button type="button">
+                    <div class="jumbotron jumbotron-fluid"
+                         style="background-image: url(http://mechaniczny.uniwersytetradom.pl/wp-content/uploads/2017/01/harmonogram.jpg);
+                        background-size: 130%">
+                        <h1 class="display-4 background-vis"
+                            style="color: #2c3362;  font-weight: bold">
+                            My Graphic</h1>
+                    </div>
+                </button>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a th:href="@{/visit/list/archived}">
+                <button type="button">
+                    <div class="jumbotron jumbotron-fluid"
+                         style="background-image: url(https://png.pngtree.com/png-vector/20191001/ourlarge/pngtree-three-colored-books-icon-cartoon-style-png-image_1770460.jpg);
+                        background-size: 120%">
+                        <h1 class="display-4 background-vis"
+                            style="color: #2c3362;  font-weight: bold">
+                            Archived Visits</h1>
+                    </div>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>
