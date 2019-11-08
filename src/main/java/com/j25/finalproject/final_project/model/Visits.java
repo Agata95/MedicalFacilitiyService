@@ -1,11 +1,14 @@
 package com.j25.finalproject.final_project.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,7 +26,11 @@ public class Visits {
     @NotEmpty
     private String time;
 
-    private String comment;
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "visits", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @Cascade(value = {org.hibernate.annotations.CascadeType.REMOVE})
+    @ToString.Exclude
+    private Set<CommentVisit> comment = new HashSet<>();
 
     private VisitsStatus status;
 

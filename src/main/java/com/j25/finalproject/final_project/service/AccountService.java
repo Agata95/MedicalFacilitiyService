@@ -126,11 +126,16 @@ public class AccountService {
         List<Account> doctors = new ArrayList<>();
 
         for (Account a : allAccounts) {
-            if(a.getAccountRoles().stream()
-                    .anyMatch(accountRole -> accountRole.getName().equals("DOCTOR"))){
+            if (a.getAccountRoles().stream()
+                    .anyMatch(accountRole -> accountRole.getName().equals("DOCTOR"))) {
                 doctors.add(a);
             }
         }
         return doctors;
+    }
+
+
+    public List<Account> listDoctorsBySurname(String surname) {
+        return accountRepository.findBySurname(surname);
     }
 }

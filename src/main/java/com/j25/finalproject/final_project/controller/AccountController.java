@@ -118,4 +118,12 @@ public class AccountController {
         return "doctor-list";
     }
 
+//    @RequestMapping(value = "/doctors", method = RequestMethod.GET)
+//    public String showDoctorBySurname(@RequestParam (value = "search", required = false) String surname, Model model, Account account) {
+//        model.addAttribute("search", accountService.listDoctorsBySurname(surname));
+//        model.addAttribute("account", account);
+//        return "doctor-list-search";
+//    }
+
+
 }

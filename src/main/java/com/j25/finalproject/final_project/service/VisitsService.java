@@ -167,12 +167,9 @@ public class VisitsService {
         return visitsRepository.findById(id);
     }
 
-//    public Set<Account> getDoctor(Long id) {
-//        Optional<Visits> visitsOptional = visitsRepository.findById(id);
-//
-//        return visitsOptional.get()
-//                .getAccountSet()
-//                .stream()
-//                .filter(d -> d.getAccountRoles().equals("DOCTOR")).collect(Collectors.toSet());
-//    }
+    public Optional<Visits> findByVisitId2(Long id) {
+        Optional<Visits> visit = visitsRepository.findById(id);
+        visit.get().setStatus(VisitsStatus.BOOK);
+        return visit;
+    }
 }

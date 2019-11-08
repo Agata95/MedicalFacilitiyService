@@ -48,9 +48,6 @@
                         <a th:href="@{/visit/list/patient/archived}" sec:authorize="hasAnyRole('PATIENT')">
                             <button class="dropdown-item" type="button">My Archived Visits</button>
                         </a>
-                        <a th:href="@{/visit/list/archived}" sec:authorize="hasAnyRole('DOCTOR')">
-                            <button class="dropdown-item" type="button">Archived Visits</button>
-                        </a>
                         <div class="dropdown-divider"></div>
                         <a th:href="@{/logout}">
                             <button class="dropdown-item" type="button">Logout</button>

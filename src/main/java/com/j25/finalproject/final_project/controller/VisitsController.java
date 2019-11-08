@@ -1,6 +1,8 @@
 package com.j25.finalproject.final_project.controller;
 
+import com.j25.finalproject.final_project.model.Account;
 import com.j25.finalproject.final_project.model.Visits;
+import com.j25.finalproject.final_project.model.VisitsStatus;
 import com.j25.finalproject.final_project.service.VisitsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -95,7 +97,7 @@ public class VisitsController {
     public String setArchive(@PathVariable("id") Long id, Principal principal) {
         visitsService.setArchive(id, principal.getName());
 
-        return "redirect:/visit/list";
+        return "redirect:/visit/list/current";
     }
 
 
@@ -120,6 +122,7 @@ public class VisitsController {
     public String visitEdit(Model model,
                               @PathVariable("id") Long id) {
         Optional<Visits> optionalVisit = visitsService.findByVisitId(id);
+        optionalVisit.get().setStatus(VisitsStatus.TODO);
         if (optionalVisit.isPresent()) {
             model.addAttribute("visit", optionalVisit.get());
             return "visit-form";
@@ -127,15 +130,15 @@ public class VisitsController {
         return "redirect:/visit/list";
     }
 
+    @GetMapping("/details/{id}")
+    public String visitDetails(Model model,
+                               @PathVariable("id") Long id) {
+        Optional<Visits> optionalVisit = visitsService.findByVisitId(id);
+        if (optionalVisit.isPresent()) {
+            model.addAttribute("visit", optionalVisit.get());
+            return "visit-details";
+        }
+        return "redirect:/visit/list";
+    }
 
-//    @GetMapping("/details/{id}")
-//    public String visitDetails(@PathVariable("id") Long id, Principal principal, Model model) {
-//
-//        Account doctor = (Account) visitsService.getDoctor(id);
-//
-//        model.addAttribute("doctor", doctor);
-//        visitsService.setArchive(id, principal.getName());
-//
-//        return "visit-details";
-//    }
 }

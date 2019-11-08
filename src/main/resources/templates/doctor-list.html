@@ -10,13 +10,21 @@
 <div class="container">
     <h1>Doctor list</h1>
     <div class="row col-md-12">
+
+        <!--<div class="active-cyan-4 mb-4">-->
+            <!--<input class="form-control" type="text" placeholder="Search" aria-label="Search">-->
+            <!--<button type="submit" class="btn btn-secondary" th:href="@{'/search/surname/'+ Search}">Submit</button>-->
+        <!--</div>-->
+
+
         <div th:each="account : ${accounts}" class="row col-md-12 list-data-row">
             <div class="col-2" th:text="${account.getTitle()}"></div>
             <div class="col-2" th:text="${account.getName()}"></div>
             <div class="col-2" th:text="${account.getSurname()}"></div>
             <div class="col-2" th:text="${account.getSpecialization()}"></div>
             <div class="btn-group col-md-4" role="group" aria-label="Basic example">
-                <a role="button" class="btn btn-secondary" th:href="@{'/visit/listDoctor/' + ${account.getId()}}">Book a Visit</a>
+                <a role="button" class="btn btn-secondary" th:href="@{'/visit/listDoctor/' + ${account.getId()}}">Book a
+                    Visit</a>
                 <a role="button" class="btn btn-secondary" th:href="@{/}">Details</a>
             </div>
         </div>

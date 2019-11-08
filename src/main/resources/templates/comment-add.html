@@ -9,9 +9,9 @@
     <th:block th:replace="fragments :: navigator" th:remove="tag"/>
     <div class="container">
         <h1>Visit form</h1>
-        <form th:action="@{/visit/add}" method="post" th:object="${visit}">
+        <form th:action="@{/comment/add}" method="post" th:object="${comment}">
             <input type="hidden" th:field="*{id}" th:value="*{id}">
-            <input type="hidden" th:field="*{status}" th:value="*{status}">
+            <input type="hidden" name="visitId" th:value="${visits}">
 
             <div class="row col-12">
                 <div class="col-2"></div>
@@ -21,18 +21,10 @@
                     </div>
                     <div class="row col-md-12 form-input-row">
                         <div class="col-md-6">
-                            <label for="dat">Date:</label>
+                            <label for="dat">Comment:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="date" class="form-control" id="dat" placeholder="dat" th:field="*{date}">
-                        </div>
-                    </div>
-                    <div class="row col-md-12 form-input-row">
-                        <div class="col-md-6">
-                            <label for="tim">Time:</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="time" class="form-control" id="tim" placeholder="tim" th:field="*{time}">
+                            <input type="text" class="form-control" id="dat" placeholder="Your comment..." th:field="*{newComment}">
                         </div>
                     </div>
                 </div>
