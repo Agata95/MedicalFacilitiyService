@@ -18,7 +18,9 @@
             <a class="py-2 navbar-brand" th:href="@{/}">Home</a>
             <!--<a class="py-2 navbar-brand" th:href="@{/aboutUs}">About Hospital</a>-->
             <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('PATIENT')"
-               th:href="@{/user/doctor/list}">Find a Doctor</a>
+               th:href="@{/user/doctor/list}">List of all Doctors</a>
+            <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('PATIENT')"
+               th:href="@{/user/search}">Search a Doctor</a>
             <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('ADMIN')"
                th:href="@{/admin/account/list}">Account list</a>
             <a class="maj-1 navbar-brand d-md-inline-block" sec:authorize="hasAnyRole('ADMIN')"

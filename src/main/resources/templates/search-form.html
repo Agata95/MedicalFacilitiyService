@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search form</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<body>
+<div class="container">
+    <h1>Search form</h1>
+    <form th:action="@{/user/search}" method="post" th:object="${searchDto}">
+        <div class="row col-12 form-container">
+            <h3>Please input doctor's name or/and surname:</h3>
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="name">Name: </label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="name" th:field="*{name}">
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="surname">Surname: </label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="surname" th:field="*{surname}">
+                </div>
+            </div>
+            <h3>Please input doctor's specialization You want to find:</h3>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="name">Specialization: </label>
+                </div>
+                <div class="col-md-6">
+                    <select th:field="*{specialization}" id="category" class="form-control" aria-describedby="phHelp">
+                        <option th:value="null">-</option>
+                        <option th:each="category : ${categories}" th:text="${category}" th:value="${category}">
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-button-row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="btn-group col-md-12" role="group" aria-label="Basic example">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+        </div>
+    </form>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>

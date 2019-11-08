@@ -3,6 +3,7 @@ package com.j25.finalproject.final_project.controller;
 import com.j25.finalproject.final_project.model.Account;
 import com.j25.finalproject.final_project.model.Nationality;
 import com.j25.finalproject.final_project.model.Specialization;
+import com.j25.finalproject.final_project.model.specification.SearchRequest;
 import com.j25.finalproject.final_project.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -118,12 +120,25 @@ public class AccountController {
         return "doctor-list";
     }
 
-//    @RequestMapping(value = "/doctors", method = RequestMethod.GET)
-//    public String showDoctorBySurname(@RequestParam (value = "search", required = false) String surname, Model model, Account account) {
-//        model.addAttribute("search", accountService.listDoctorsBySurname(surname));
-//        model.addAttribute("account", account);
-//        return "doctor-list-search";
-//    }
+    @GetMapping("/search")
+    public String searchForm(Model model, SearchRequest dto) {
+        model.addAttribute("searchDto", dto);
+        model.addAttribute("categories", Specialization.values());
+
+        return "search-form";
+    }
+
+    @PostMapping("/search")
+    public String searchProducts(SearchRequest dto, Model model, Principal principal) {
+        List<Account> accounts = accountService.getAllFromDto(dto);
+        if (!accounts.isEmpty()) {
+            model.addAttribute("accounts", accounts);
+            model.addAttribute("ownerName", principal.getName());
+
+            return "doctor-list";
+        }
+        return "redirect:/";
+    }
 
 
 }

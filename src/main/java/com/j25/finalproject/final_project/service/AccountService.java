@@ -3,6 +3,8 @@ package com.j25.finalproject.final_project.service;
 import com.j25.finalproject.final_project.model.Account;
 import com.j25.finalproject.final_project.model.AccountRole;
 import com.j25.finalproject.final_project.model.dto.AccountPasswordResetRequest;
+import com.j25.finalproject.final_project.model.specification.AccountSpecification;
+import com.j25.finalproject.final_project.model.specification.SearchRequest;
 import com.j25.finalproject.final_project.repository.AccountRepository;
 import com.j25.finalproject.final_project.repository.AccountRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -135,7 +137,13 @@ public class AccountService {
     }
 
 
-    public List<Account> listDoctorsBySurname(String surname) {
-        return accountRepository.findBySurname(surname);
+//    public List<Account> listDoctorsBySurname(String surname) {
+//        return accountRepository.findBySurname(surname);
+//    }
+
+    public List<Account> getAllFromDto(SearchRequest dto) {
+        return accountRepository.findAll(new AccountSpecification(dto));
+
     }
+
 }
