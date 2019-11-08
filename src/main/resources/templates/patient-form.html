@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit form</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<div>
+    <th:block th:replace="fragments :: navigator" th:remove="tag"/>
+    <div class="container">
+        <h1>Edit form</h1>
+        <form th:action="@{user/account/edit}" method="post" th:object="${patient}">
+            <input type="hidden" th:field="*{id}" th:value="*{id}">
+
+            <h2>Your Personal Details:</h2>
+            <div class="row col-12">
+                <div class="col-2"></div>
+                <div class="col-8 form-container">
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="name">Name:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" id="name" th:field="*{name}" required>
+                        </div>
+                    </div>
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="surname">Surname:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" min="3" id="surname" th:field="*{surname}" required>
+                        </div>
+                    </div>
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="pesel">PESEL:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" min="11" id="pesel" th:field="*{pesel}" required>
+                        </div>
+                    </div>
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="phoneNumber">Phone number:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" id="phoneNumber" th:field="*{phoneNumber}">
+                        </div>
+                    </div>
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="emailAddress">Email address:</label>
+
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input type="email" class="form-control" id="emailAddress" th:field="*{emailAddress}"
+                                   aria-describedby="emailHelp" >
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="street">Street:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" id="street"th:field="*{street}">
+                        </div>
+                    </div>
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="homeNumber">Home/Flat number:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" id="homeNumber"th:field="*{homeNumber}">
+                        </div>
+                    </div>
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="postcode">Zip:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" id="postcode" th:field="*{postcode}">
+                        </div>
+                    </div>
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="city">City:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" id="city" th:field="*{city}">
+                        </div>
+                    </div>
+                    <div class="row col-md-12 form-input-row">
+                        <div class="col-md-6">
+                            <label for="nationalityId">Nationality:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select th:field="*{nationality}" th:name="nationalityId" id="nationalityId"
+                                    class="form-control">
+                                <option th:each="nationality : ${nationalities}" th:text="${nationality}"
+                                        th:value="${nationality}">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-2"></div>
+
+
+            <div class="row col-md-12 form-button-row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="btn-group col-md-12" role="group" aria-label="Basic example">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </form>
+    </div>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>

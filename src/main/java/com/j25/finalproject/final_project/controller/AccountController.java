@@ -3,6 +3,7 @@ package com.j25.finalproject.final_project.controller;
 import com.j25.finalproject.final_project.model.Account;
 import com.j25.finalproject.final_project.model.Nationality;
 import com.j25.finalproject.final_project.model.Specialization;
+import com.j25.finalproject.final_project.model.Visits;
 import com.j25.finalproject.final_project.model.dto.AccountPasswordResetRequest;
 import com.j25.finalproject.final_project.model.specification.SearchRequest;
 import com.j25.finalproject.final_project.service.AccountService;
@@ -182,4 +183,17 @@ public class AccountController {
 
         return "redirect:/";
     }
+
+
+    @GetMapping("/account/edit")
+    public String patientEdit(Model model, Principal principal) {
+        Optional<Account> optionalAccount = accountService.findByUsername(principal);
+        if (optionalAccount.isPresent()) {
+            model.addAttribute("patient", optionalAccount.get());
+            model.addAttribute("nationalities", Nationality.values());
+            return "patient-form";
+        }
+        return "redirect:/user/details";
+    }
+
 }
