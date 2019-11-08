@@ -3,6 +3,7 @@ package com.j25.finalproject.final_project.controller;
 import com.j25.finalproject.final_project.model.Account;
 import com.j25.finalproject.final_project.model.Nationality;
 import com.j25.finalproject.final_project.model.Specialization;
+import com.j25.finalproject.final_project.model.dto.AccountPasswordResetRequest;
 import com.j25.finalproject.final_project.model.specification.SearchRequest;
 import com.j25.finalproject.final_project.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,17 +103,6 @@ public class AccountController {
         return "login-form";
     }
 
-    @GetMapping("/details")
-    public String patientDetails(Model model,
-                                 @RequestParam(name = "id") Long id) {
-        Optional<Account> optionalAccount = accountService.findById(id);
-        if (optionalAccount.isPresent()) {
-            model.addAttribute("patient", optionalAccount.get());
-            return "patient-details";
-        }
-        return "redirect:/user/details";
-    }
-
     @GetMapping("/doctor/list")
     public String getDoctorsList(Model model) {
         model.addAttribute("accounts", accountService.getAllDoctors());
@@ -141,4 +131,55 @@ public class AccountController {
     }
 
 
+    @GetMapping("/account/details")
+    @PreAuthorize(value = "hasAnyRole('PATIENT')")
+    public String accountPatientDetails(Model model, Principal principal) {
+        Optional<Account> optionalAccount = accountService.findByUsername(principal);
+        if (optionalAccount.isPresent()) {
+            model.addAttribute("patient", optionalAccount.get());
+            return "patient-details";
+        }
+        return "redirect:/user/details";
+    }
+
+    @GetMapping("/account/doctor/details")
+    @PreAuthorize(value = "hasAnyRole('DOCTOR')")
+    public String accountDoctorDetails(Model model, Principal principal) {
+        Optional<Account> optionalAccount = accountService.findByUsername(principal);
+        if (optionalAccount.isPresent()) {
+            model.addAttribute("doctor", optionalAccount.get());
+            return "doctor-details";
+        }
+        return "redirect:/user/details";
+    }
+
+    @GetMapping("/details")
+    public String patientDetails(Model model,
+                                 @RequestParam(name = "id") Long id) {
+        Optional<Account> optionalAccount = accountService.findById(id);
+        if (optionalAccount.isPresent()) {
+            model.addAttribute("patient", optionalAccount.get());
+            return "patient-details";
+        }
+        return "redirect:/visit/list";
+    }
+
+
+    @GetMapping("/resetPassword")
+    public String resetPassword(Model model, @RequestParam(name = "accountId") Long accountId) {
+        Optional<Account> accountOptional = accountService.findById(accountId);
+
+        if (accountOptional.isPresent()) {
+            model.addAttribute("account", accountOptional.get());
+            return "account-passwordreset";
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/resetPassword")
+    public String resetPassword(AccountPasswordResetRequest request) {
+        accountService.resetPassword(request);
+
+        return "redirect:/";
+    }
 }

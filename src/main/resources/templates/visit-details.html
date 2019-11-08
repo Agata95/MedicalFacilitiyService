@@ -16,16 +16,6 @@
     <h1>Visit Details</h1>
     <div class="row col-md-12 list-container">
 
-        <!--<div style="padding: 20px;"></div>-->
-
-        <!--<div class="row col-md-12 list-header-row">-->
-        <!--&lt;!&ndash;<div class="col-1" sec:authorize="hasAnyRole('DOCTOR')">Id</div>&ndash;&gt;-->
-        <!--<div class="col-2">Date</div>-->
-        <!--<div class="col-1">Time</div>-->
-        <!--<div class="col-3">Doctor</div>-->
-        <!--<div class="col-3">Patient</div>-->
-        <!--<div class="col-3">Comment</div>-->
-        <!--</div>-->
         <div class="row col-md-12 ">
             <div th:object="${visit}" class="row col-md-12">
                 <div class="row col-md-12 list-row" th:object="${visit}">
@@ -70,12 +60,12 @@
                     <div class="col-md-2"
                          th:text="${visit.getPatient().getName() + ' ' + visit.getPatient().getSurname()}"></div>
                     <div class="col-md-4"></div>
-                    <!--<div class="col-md-4" sec:authorize="hasAnyRole('DOCTOR')">-->
-                    <!--<a th:href="@{'/comment/add?id=' + ${visit.getId()}}">-->
-                    <!--<button type="button" class="btn btn-secondary list-row-2">Add comment-->
-                    <!--</button>-->
-                    <!--</a>-->
-                    <!--</div>-->
+                    <div class="col-md-4" sec:authorize="hasAnyRole('DOCTOR')">
+                        <a th:href="@{'/user/details?id=' + ${visit.getPatient().getId()}}">
+                            <button type="button" class="btn btn-secondary list-row-2">Patient Details
+                            </button>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="row col-md-12 list-row" th:object="${visit}">

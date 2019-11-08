@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Patient Details</title>
+    <title>Doctor Details</title>
     <th:block th:replace="fragments :: link-styles" th:remove="tag">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     </th:block>
@@ -18,73 +18,80 @@
             <h1>Your Details:</h1>
         </div>
         <div class="row col-md-12">
-            <div class="row col-md-12" style="padding: 10px" th:object="${patient}">
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
                 <div class="col-md-2 font-weight-bold">Name:</div>
-                <div class="col-md-4" th:text="*{name + ' ' + surname}"></div>
+                <div class="col-md-4" th:text="*{title + ' ' + name + ' ' + surname}"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
-                    <a th:href="@{/user/resetPassword(accountId=${patient.getId()})}">
+                    <a th:href="@{/user/resetPassword(accountId=${doctor.getId()})}">
                         <button type="button" class="btn btn-outline-secondary col-md-12">Edit You Data
                         </button>
                     </a>
                 </div>
             </div>
-            <div class="row col-md-12" style="padding: 10px" th:object="${patient}">
-                <div class="col-md-2 font-weight-bold">PESEL:</div>
-                <div class="col-md-4" th:text="*{pesel}"></div>
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
+                <div class="col-md-2 font-weight-bold">Address:</div>
+                <div class="col-md-4" th:text="*{street}"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
-                    <a th:href="@{/user/resetPassword(accountId=${patient.getId()})}">
+                    <a th:href="@{/user/resetPassword(accountId=${doctor.getId()})}">
                         <button type="button" class="btn btn-outline-secondary col-md-12">Reset Password
                         </button>
                     </a>
                 </div>
             </div>
-            <div class="row col-md-12" style="padding: 10px" th:object="${patient}">
-                <div class="col-md-2 font-weight-bold">Address:</div>
-                <div class="col-md-4" th:text="*{street}"></div>
-                <div class="col-md-2"></div>
-                <div class="col-md-4">
-                </div>
-            </div>
-            <div class="row col-md-12" style="padding: 10px" th:object="${patient}">
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
                 <div class="col-md-2 font-weight-bold"></div>
                 <div class="col-md-4" th:text="*{homeNumber}"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
                 </div>
             </div>
-            <div class="row col-md-12" style="padding: 10px" th:object="${patient}">
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
                 <div class="col-md-2 font-weight-bold"></div>
                 <div class="col-md-4" th:text="*{postcode}"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
                 </div>
             </div>
-            <div class="row col-md-12" style="padding: 10px" th:object="${patient}">
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
                 <div class="col-md-2 font-weight-bold"></div>
                 <div class="col-md-4" th:text="*{city}"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
                 </div>
             </div>
-            <div class="row col-md-12" style="padding: 10px" th:object="${patient}">
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
                 <div class="col-md-2 font-weight-bold">Nationality:</div>
                 <div class="col-md-4" th:text="*{nationality}"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
                 </div>
             </div>
-            <div class="row col-md-12" style="padding: 10px" th:object="${patient}">
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
                 <div class="col-md-2 font-weight-bold">Phone Number:</div>
                 <div class="col-md-4" th:text="*{phoneNumber}"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
                 </div>
             </div>
-            <div class="row col-md-12" style="padding: 10px" th:object="${patient}">
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
                 <div class="col-md-2 font-weight-bold">Email Address:</div>
                 <div class="col-md-4" th:text="*{emailAddress}"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                </div>
+            </div>
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
+                <div class="col-md-2 font-weight-bold">Office Number:</div>
+                <div class="col-md-4" th:text="*{offceNumber}"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                </div>
+            </div>
+            <div class="row col-md-12" style="padding: 10px" th:object="${doctor}">
+                <div class="col-md-2 font-weight-bold">Specialization:</div>
+                <div class="col-md-4" th:text="*{specialization}"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
                 </div>

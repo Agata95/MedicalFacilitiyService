@@ -41,7 +41,10 @@
                         Profile
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <a th:href="@{/user/details}">
+                        <a th:href="@{/user/account/details}" sec:authorize="hasAnyRole('PATIENT')">
+                            <button class="dropdown-item" type="button">Account Details</button>
+                        </a>
+                        <a th:href="@{/user/account/doctor/details}" sec:authorize="hasAnyRole('DOCTOR')">
                             <button class="dropdown-item" type="button">Account Details</button>
                         </a>
                         <a th:href="@{/visit/patient/list}" sec:authorize="hasAnyRole('PATIENT')">

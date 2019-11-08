@@ -62,25 +62,7 @@ public class AdminAccountController {
         return "redirect:/admin/account/list";
     }
 
-    @GetMapping("/resetPassword")
-    @PreAuthorize(value = "hasAnyRole('ADMIN')")
-    public String resetPassword(Model model, @RequestParam(name = "accountId") Long accountId) {
-        Optional<Account> accountOptional = accountService.findById(accountId);
 
-        if (accountOptional.isPresent()) {
-            model.addAttribute("account", accountOptional.get());
-            return "account-passwordreset";
-        }
-        return "redirect:/admin/account/list";
-    }
-
-    @PostMapping("/resetPassword")
-    @PreAuthorize(value = "hasAnyRole('ADMIN')")
-    public String resetPassword(AccountPasswordResetRequest request) {
-        accountService.resetPassword(request);
-
-        return "redirect:/admin/account/list";
-    }
 
     @GetMapping("/editRoles")
     @PreAuthorize(value = "hasAnyRole('ADMIN')")
@@ -121,5 +103,7 @@ public class AdminAccountController {
 
         return "redirect:/account/list/page/" + page;
     }
+
+
 
 }

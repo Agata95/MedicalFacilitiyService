@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.*;
 
 @Service
@@ -137,13 +138,12 @@ public class AccountService {
     }
 
 
-//    public List<Account> listDoctorsBySurname(String surname) {
-//        return accountRepository.findBySurname(surname);
-//    }
-
     public List<Account> getAllFromDto(SearchRequest dto) {
         return accountRepository.findAll(new AccountSpecification(dto));
 
     }
 
+    public Optional<Account> findByUsername(Principal account) {
+        return accountRepository.findByUsername(account.getName());
+    }
 }
